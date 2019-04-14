@@ -1,7 +1,7 @@
 [submodule "crazyflie-firmware"]
 	path = crazyflie-firmware
 	url = https://github.com/PDfork/crazyflie-firmware.git
-	branch = flw
+	branch = avoidTarget
 [submodule "crazyflie-lib-python"]
 	path = crazyflie-lib-python
 	url = https://github.com/pPatrickK/crazyflie-lib-python.git
@@ -29,7 +29,7 @@
 [submodule "ros_ws/src/crazyflie_ros"]
 	path = ros_ws/src/crazyflie_ros
 	url = https://github.com/PDfork/crazyflie_ros.git
-	branch=flw
+	branch = avoidTarget
 [submodule "ros_ws/src/crazyswarm/scripts/DroneCommander"]
 	path = ros_ws/src/crazyswarm/scripts/DroneCommander
 	url = https://github.com/pPatrickK/DroneCommander.git
