@@ -1,6 +1,6 @@
 [submodule "crazyflie-firmware"]
 	path = crazyflie-firmware
-	url = https://github.com/pPatrickK/crazyflie-firmware.git
+	url = https://github.com/PDfork/crazyflie-firmware.git
 	branch = flw
 [submodule "crazyflie-lib-python"]
 	path = crazyflie-lib-python
@@ -28,7 +28,7 @@
 	branch = flw
 [submodule "ros_ws/src/crazyflie_ros"]
 	path = ros_ws/src/crazyflie_ros
-	url = https://github.com/pPatrickK/crazyflie_ros.git
+	url = https://github.com/PDfork/crazyflie_ros.git
 	branch=flw
 [submodule "ros_ws/src/crazyswarm/scripts/DroneCommander"]
 	path = ros_ws/src/crazyswarm/scripts/DroneCommander
