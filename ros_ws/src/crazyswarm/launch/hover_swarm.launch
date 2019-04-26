@@ -16,14 +16,15 @@
       # genericLogTopic_log1_Variables: ["profiling.usec_ekf", "profiling.usec_traj", "profiling.usec_ctrl", "profiling.usec_idle"]
       # genericLogTopic_log1_Variables: ["stabilizer.x", "ctrltarget.x", "vicon.x", "stabilizer.z", "ctrltarget.z", "vicon.z"]
       # genericLogTopic_log1_Variables: ["stateEstimate.roll", "ctrlMel.rolld"]
-      genericLogTopic_log1_Variables: ["ctrlStat.edist"]
+      genericLogTopic_log1_Variables: ["sitAw.tX","sitAw.tY","sitAw.stX","sitAw.stY","sitAw.offX","sitAw.offY"]
+      # genericLogTopic_log1_Variables: ["ctrlStat.edist"]
       # genericLogTopic_log1_Variables: ["stateEstimate.yaw", "ctrltarget.yaw", "stateEstimate.x", "ctrltarget.x"] #, "ctrltarget.x", "stateEstimate.roll", "ctrlMel.rolld"]
       firmwareParams: # for all (independent of type)
         commander:
           enHighLevel: 1
         stabilizer:
           estimator: 3 # 1: complementary, 2: kalman, 3: kalmanUSC (only crazyswarm firmware)
-          controller: 1 # 1: PID, 2: mellinger
+          controller: 2 # 1: PID, 2: mellinger
         ring:
           effect: 14 # 6: double spinner, 7: solid color, 14: packetRate
           solidBlue: 255 # if set to solid color
@@ -48,7 +49,7 @@
       write_csvs: False
       force_no_cache: False
       enable_parameters: True
-      enable_logging: False
+      enable_logging: True
     </rosparam>
   </node>
 
@@ -65,6 +66,7 @@
 
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find crazyswarm)/launch/test.rviz"/>
 
+  <node pkg="rqt_plot" type="rqt_plot" name="rqt_plot" args="/cf30/log1/values[0] /cf30/log1/values[1] /cf30/log1/values[2] /cf30/log1/values[3] /cf30/log1/values[4] /cf30/log1/values[5]"/>
   <!-- <node pkg="rqt_plot" type="rqt_plot" name="rqt_plot_x" args="/cf2/log1/values[0]"/> -->
   <!-- <node pkg="rqt_plot" type="rqt_plot" name="rqt_plot_roll" args="/cf1/log1/values[2] /cf1/log1/values[3]"/> -->
 
