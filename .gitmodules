@@ -4,27 +4,27 @@
 	branch = avoidTarget
 [submodule "crazyflie-lib-python"]
 	path = crazyflie-lib-python
-	url = https://github.com/pPatrickK/crazyflie-lib-python.git
+	url = https://github.com/PDfork/crazyflie-lib-python.git
 	branch = flw
 [submodule "crazyflie-clients-python"]
 	path = crazyflie-clients-python
-	url = https://github.com/bitcraze/crazyflie-clients-python.git
+	url = https://github.com/PDfork/crazyflie-clients-python.git
 	branch = develop
 [submodule "crazyradio-firmware"]
 	path = crazyradio-firmware
-	url = https://github.com/pPatrickK/crazyradio-firmware.git
+	url = https://github.com/PDfork/crazyradio-firmware.git
 	branch=flw
 [submodule "crazyflie2-nrf-firmware"]
 	path = crazyflie2-nrf-firmware
-	url = https://github.com/pPatrickK/crazyflie2-nrf-firmware.git
+	url = https://github.com/PDfork/crazyflie2-nrf-firmware.git
 	branch=flw
 [submodule "ros_ws/src/externalDependencies/libobjecttracker"]
 	path = ros_ws/src/externalDependencies/libobjecttracker
-	url = https://github.com/pPatrickK/libobjecttracker
+	url = https://github.com/PDfork/libobjecttracker
 	branch = flw
 [submodule "ros_ws/src/externalDependencies/libmotioncapture"]
 	path = ros_ws/src/externalDependencies/libmotioncapture
-	url = https://github.com/pPatrickK/libmotioncapture.git
+	url = https://github.com/PDfork/libmotioncapture.git
 	branch = flw
 [submodule "ros_ws/src/crazyflie_ros"]
 	path = ros_ws/src/crazyflie_ros
@@ -32,4 +32,4 @@
 	branch = avoidTarget
 [submodule "ros_ws/src/crazyswarm/scripts/DroneCommander"]
 	path = ros_ws/src/crazyswarm/scripts/DroneCommander
-	url = https://github.com/pPatrickK/DroneCommander.git
+	url = https://github.com/PDfork/DroneCommander.git
