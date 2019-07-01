@@ -13,7 +13,7 @@ SCRIPTDIR = "../../../../scripts/"
 def read_by_id(path):
 	by_id = {}
 	with open(path, 'r') as ymlfile:
-		root = yaml.load(ymlfile)
+		root = yaml.load(ymlfile, Loader=yaml.FullLoader)
 		for node in root["crazyflies"]:
 			id = int(node["id"])
 			by_id[id] = node
@@ -27,7 +27,7 @@ def save():
 allCrazyflies = read_by_id("../launch/allCrazyflies.yaml")
 enabled = read_by_id("../launch/crazyflies.yaml").keys()
 with open("../launch/crazyflieTypes.yaml", 'r') as ymlfile:
-	data = yaml.load(ymlfile)
+	data = yaml.load(ymlfile, Loader=yaml.FullLoader)
 	cfTypes = data["crazyflieTypes"]
 
 # compute absolute pixel coordinates from the initial positions

@@ -33,3 +33,6 @@
 [submodule "ros_ws/src/crazyswarm/scripts/DroneCommander"]
 	path = ros_ws/src/crazyswarm/scripts/DroneCommander
 	url = https://github.com/PDfork/DroneCommander.git
+[submodule "ros_ws/src/cf_logging"]
+	path = ros_ws/src/cf_logging
+	url = https://github.com/PDfork/cf_logging
