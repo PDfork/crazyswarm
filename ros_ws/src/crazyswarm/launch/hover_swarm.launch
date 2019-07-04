@@ -10,15 +10,16 @@
       firmware: "crazyswarm" # one of "crazyswarm", "bitcraze"
       broadcast_address: "FFE7E7E7E7"
       world_frame: "/world"
-      genericLogTopics: ["log1"]
-      genericLogTopicFrequencies: [10]
+      genericLogTopics: ["log1","log2","log3"]
+      genericLogTopicFrequencies: [100, 100, 100]
       # genericLogTopic_log1_Variables: ["ekfprof.usec_setup", "ekfprof.usec_innov", "ekfprof.usec_gain", "ekfprof.usec_corr", "ekfprof.usec_cov"]
       # genericLogTopic_log1_Variables: ["profiling.usec_ekf", "profiling.usec_traj", "profiling.usec_ctrl", "profiling.usec_idle"]
       # genericLogTopic_log1_Variables: ["stabilizer.x", "ctrltarget.x", "vicon.x", "stabilizer.z", "ctrltarget.z", "vicon.z"]
       # genericLogTopic_log1_Variables: ["stateEstimate.roll", "ctrlMel.rolld"]
-      # genericLogTopic_log1_Variables: ["sitAw.tX","sitAw.tY","sitAw.stX","sitAw.stY","sitAw.offX","sitAw.offY"]
+      genericLogTopic_log1_Variables: ["vicon.nDist0","vicon.nX0","vicon.nY0","vicon.nVX0","vicon.nVY0"]
+      genericLogTopic_log2_Variables: ["colAw.offX","colAw.offY","colAw.tX","colAw.tY","colAw.stX","colAw.stY"]
       # genericLogTopic_log1_Variables: ["ctrlStat.edist"]
-      genericLogTopic_log1_Variables: ["stateEstimate.yaw", "stateEstimate.x", "stateEstimate.y", "stateEstimate.z"]
+      genericLogTopic_log3_Variables: ["stateEstimate.yaw", "stateEstimate.x", "stateEstimate.y", "stateEstimate.z"]
       firmwareParams: # for all (independent of type)
         commander:
           enHighLevel: 1
@@ -46,7 +47,7 @@
       # optitrack_server_ip: "optitrack"
       save_point_clouds: ~/pointCloud.ot
       print_latency: False
-      write_csvs: True
+      write_csvs: False
       force_no_cache: False
       enable_parameters: True
       enable_logging: True

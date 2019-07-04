@@ -18,13 +18,28 @@ if __name__ == "__main__":
     cf1.prefix = "cf30"
     cf2.prefix = "cf31"
 
+    cf1.setParam('sitAw/CAActive', 1)
+    cf2.setParam('sitAw/CAActive', 1)
+    cf1.setParam('sitAw/SearchRadius', 3.0)
+    cf2.setParam('sitAw/SearchRadius', 3.0)
+    cf1.setParam('sitAw/SeparationRadius', 1.5)
+    cf2.setParam('sitAw/SeparationRadius', 1.5)
+    cf1.setParam('sitAw/TargetRadius', 0.1)
+    cf2.setParam('sitAw/TargetRadius', 0.1)
+    cf1.setParam('sitAw/RepGain', 1.0)
+    cf2.setParam('sitAw/RepGain', 1.0)
+    cf1.setParam('sitAw/Anisotropy', 0.5)
+    cf2.setParam('sitAw/Anisotropy', 0.5)
+
+    timeHelper.sleep(10.0)
+
     #cf1.setGroupMask(0b00000001)
     #cf2.setGroupMask(0b00000010)
 
     z = 0.3
-    x_offset = 0.0
-    y_offset = 0.5
-    TRIALS = 4
+    x_offset = 0.5
+    y_offset = 1.0
+    TRIALS = 3
     TIMESCALE = 1.0
 
     allcfs.takeoff(targetHeight=z, duration=2.0)
@@ -44,18 +59,13 @@ if __name__ == "__main__":
         cf2.goTo(pos2, 0, 5.0*TIMESCALE)
         timeHelper.sleep(5.0*TIMESCALE+0.5)
 
-        if i > TRIALS/2:
-            cf1.setParam('sitAw/CAActive', 1)
-            cf2.setParam('sitAw/CAActive', 1)
-            timeHelper.sleep(5.0)
-
-    cf1.setParam('sitAw/CAActive', 0)
-    cf2.setParam('sitAw/CAActive', 0)
-
     for cf in allcfs.crazyflies:
         pos = np.array(cf.initialPosition) + np.array([0, 0, 0.1])
         cf.goTo(pos, 0, 5.0)
     timeHelper.sleep(5.5)
+
+    cf1.setParam('sitAw/CAActive', 0)
+    cf2.setParam('sitAw/CAActive', 0)
 
     allcfs.land(targetHeight=0.05, duration=2.0)
     timeHelper.sleep(3.0)
