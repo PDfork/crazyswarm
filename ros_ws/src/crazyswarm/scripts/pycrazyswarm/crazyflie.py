@@ -154,6 +154,10 @@ class CrazyflieServer:
     def startTrajectory(self, trajectoryId, timescale = 1.0, reverse = False, relative = True, groupMask = 0):
         self.startTrajectoryService(groupMask, trajectoryId, timescale, reverse, relative)
 
+    def updateParams(self, name, value):
+        for cf in self.crazyflies:
+            cf.setParam(name, value)
+
     # def setParam(self, name, value, group = 0):
     #     rospy.set_param("/cfgroup" + str(group) + "/" + name, value)
     #     self.updateParamsService(group, [name])
