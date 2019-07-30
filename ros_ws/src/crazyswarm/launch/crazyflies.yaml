@@ -1,12 +1,12 @@
 crazyflies:
-- channel: 80
+- channel: 82
   id: 30
   initialPosition:
   - 0.0
   - 0.0
   - 0.0
   type: defaultCF30
-- channel: 80
+- channel: 82
   id: 31
   initialPosition:
   - 1.5

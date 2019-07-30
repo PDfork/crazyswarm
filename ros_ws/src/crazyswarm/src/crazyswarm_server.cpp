@@ -615,6 +615,7 @@ public:
     bool useMotionCaptureObjectTracking,
     const std::vector<crazyflie_driver::LogBlock>& logBlocks,
     std::string interactiveObject,
+    std::vector<std::string> obstacleObjects, // by PatrickD
     bool writeCSVs,
     bool sendPositionOnly
     )
@@ -629,6 +630,7 @@ public:
     , m_useMotionCaptureObjectTracking(useMotionCaptureObjectTracking)
     , m_br()
     , m_interactiveObject(interactiveObject)
+    , m_obstacleObjects(obstacleObjects) // by PatrickD
     , m_sendPositionOnly(sendPositionOnly)
     , m_outputCSVs()
     , m_phase(0)
@@ -667,6 +669,16 @@ public:
     publishRigidBody(m_interactiveObject, 0xFF, states);
   }
 
+  // by PatrickD
+  void runObstacleObjects(std::vector<CrazyflieBroadcaster::externalPose> &states)
+  {
+    auto id = 0xC8; // obstacle IDs: 200 - 255
+    for (auto obst : m_obstacleObjects) {
+      publishRigidBody(obst, id, states);
+      id++;
+    }
+  }
+
   void runFast()
   {
     auto stamp = std::chrono::high_resolution_clock::now();
@@ -675,6 +687,10 @@ public:
 
     if (!m_interactiveObject.empty()) {
       runInteractiveObject(states);
+    }
+
+    if (!m_obstacleObjects.empty()) { // by PatrickD
+      runObstacleObjects(states);
     }
 
     if (m_useMotionCaptureObjectTracking) {
@@ -1209,6 +1225,7 @@ private:
   // std::map<uint8_t, libmotioncapture::Object> lastPoses;
   std::vector<CrazyflieROS*> m_cfs;
   std::string m_interactiveObject;
+  std::vector<std::string> m_obstacleObjects; // by PatrickD
   libobjecttracker::ObjectTracker* m_tracker;
   int m_radio;
   // ViconDataStreamSDK::CPP::Client* m_pClient;
@@ -1311,6 +1328,7 @@ public:
     bool useMotionCaptureObjectTracking;
     std::string logFilePath;
     std::string interactiveObject;
+    std::vector<std::string> obstacleObjects; // by PatrickD
     bool printLatency;
     bool writeCSVs;
     bool sendPositionOnly;
@@ -1323,6 +1341,7 @@ public:
     nl.getParam("broadcast_address", broadcastAddress);
     nl.param<std::string>("save_point_clouds", logFilePath, "");
     nl.param<std::string>("interactive_object", interactiveObject, "");
+    nl.param("obstacle_objects", obstacleObjects, std::vector<std::string>()); // by PatrickD
     nl.getParam("print_latency", printLatency);
     nl.getParam("write_csvs", writeCSVs);
     nl.param<std::string>("motion_capture_type", motionCaptureType, "vicon");
@@ -1441,6 +1460,7 @@ public:
                 useMotionCaptureObjectTracking,
                 logBlocks,
                 interactiveObject,
+                obstacleObjects, // by PatrickD
                 writeCSVs,
                 sendPositionOnly);
             },
