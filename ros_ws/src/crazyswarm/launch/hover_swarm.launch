@@ -12,7 +12,7 @@
       broadcasting_num_repeats: 15
       broadcasting_delay_between_repeats_ms: 1
       world_frame: "/world"
-      obstacle_objects: ["KLT_5_neu"]
+      obstacle_objects: ["KLT_5_neu", "KLT_10_neu"]
       # genericLogTopics: ["log1"] #,"log2","log3"]
       # genericLogTopicFrequencies: [250] #, 250, 10] # ms
       # genericLogTopic_log1_Variables: ["ekfprof.usec_setup", "ekfprof.usec_innov", "ekfprof.usec_gain", "ekfprof.usec_corr", "ekfprof.usec_cov"]
