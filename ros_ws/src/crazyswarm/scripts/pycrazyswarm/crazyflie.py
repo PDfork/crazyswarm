@@ -49,6 +49,7 @@ class Crazyflie:
         self.goToService = rospy.ServiceProxy(prefix + "/go_to", GoTo)
         rospy.wait_for_service(prefix + "/upload_trajectory")
         self.uploadTrajectoryService = rospy.ServiceProxy(prefix + "/upload_trajectory", UploadTrajectory)
+        # self.uploadObstacleService = rospy.ServiceProxy(prefix + "/upload_obstacle", UploadObstacle)
         # rospy.wait_for_service(prefix + "/start_trajectory")# uncommented by FLW to have service for single cf
         # self.startTrajectoryService = rospy.ServiceProxy(prefix + "/start_trajectory", StartTrajectory) # uncommented by FLW to have service for single cf
         rospy.wait_for_service(prefix + "/update_params")
@@ -81,6 +82,9 @@ class Crazyflie:
             piece.poly_yaw = poly.pyaw.p
             pieces.append(piece)
         self.uploadTrajectoryService(trajectoryId, pieceOffset, pieces)
+
+    # def uploadObstacle(self, obstacleId, obstacleType, obstacleLoc, pieceOffset, params):
+    #     self.uploadObstacleService(obstacleId, obstacleType, obstacleLoc, pieceOffset, pieces)
 
     def startTrajectory(self, trajectoryId, timescale = 1.0, reverse = False, relative = True, groupMask = 0):
         self.startTrajectoryService(groupMask, trajectoryId, timescale, reverse, relative)

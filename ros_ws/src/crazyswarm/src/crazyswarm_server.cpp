@@ -8,6 +8,7 @@
 #include "crazyflie_driver/GenericLogData.h"
 #include "crazyflie_driver/UpdateParams.h"
 #include "crazyflie_driver/UploadTrajectory.h"
+#include "crazyflie_driver/UploadObstacle.h"
 #undef major
 #undef minor
 #include "crazyflie_driver/Takeoff.h"
@@ -183,6 +184,7 @@ public:
     , m_type(type)
     , m_serviceUpdateParams()
     , m_serviceUploadTrajectory()
+    , m_serviceUploadObstacle() // by PatrickD
     , m_serviceTakeoff()
     , m_serviceLand()
     , m_serviceGoTo()
@@ -194,6 +196,7 @@ public:
     ros::NodeHandle n;
     n.setCallbackQueue(&queue);
     m_serviceUploadTrajectory = n.advertiseService(tf_prefix + "/upload_trajectory", &CrazyflieROS::uploadTrajectory, this);
+    m_serviceUploadObstacle = n.advertiseService(tf_prefix + "/upload_obstacle", &CrazyflieROS::uploadObstacle, this); // by PatrickD
     m_serviceTakeoff = n.advertiseService(tf_prefix + "/takeoff", &CrazyflieROS::takeoff, this);
     m_serviceLand = n.advertiseService(tf_prefix + "/land", &CrazyflieROS::land, this);
     m_serviceGoTo = n.advertiseService(tf_prefix + "/go_to", &CrazyflieROS::goTo, this);
@@ -364,6 +367,21 @@ public:
     m_cf.uploadTrajectory(req.trajectoryId, req.pieceOffset, pieces);
 
     ROS_INFO("[%s] Uploaded trajectory", m_frame.c_str());
+
+
+    return true;
+  }
+
+  // by PatrickD
+  bool uploadObstacle(
+    crazyflie_driver::UploadObstacle::Request& req,
+    crazyflie_driver::UploadObstacle::Response& res)
+  {
+    ROS_INFO("[%s] Upload obstacle", m_frame.c_str());
+
+    m_cf.updateObstacle(req.obstacleId, req.obstacleType, req.obstacleLocation, req.pieceOffset, pieces);
+
+    ROS_INFO("[%s] Uploaded obstacle", m_frame.c_str());
 
 
     return true;
@@ -577,6 +595,7 @@ private:
 
   ros::ServiceServer m_serviceUpdateParams;
   ros::ServiceServer m_serviceUploadTrajectory;
+  ros::ServiceServer m_serviceUploadObstacle; // by PatrickD
   ros::ServiceServer m_serviceTakeoff;
   ros::ServiceServer m_serviceLand;
   ros::ServiceServer m_serviceGoTo;

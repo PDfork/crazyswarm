@@ -31,10 +31,10 @@ if __name__ == "__main__":
     allcfs.updateParams('flocking/Ymin', -5.0)
     allcfs.updateParams('flocking/Ymax', 5.0)
     allcfs.updateParams('flocking/SearchRadius', 3.0)
-    allcfs.updateParams('flocking/SeparationRadius', 1.25)
-    allcfs.updateParams('flocking/TargetRadius', 0.10)
+    allcfs.updateParams('flocking/SeparationRadius', 1.5)
+    allcfs.updateParams('flocking/TargetRadius', 0.3)
     allcfs.updateParams('flocking/RepGain', 0.75)
-    allcfs.updateParams('flocking/MaxSpeed', 0.6)
+    allcfs.updateParams('flocking/MaxSpeed', 0.7)
     allcfs.updateParams('flocking/Anisotropy', 0.5)
     allcfs.updateParams('flocking/Align', 0)
     allcfs.updateParams('flocking/Cohese', 0)
@@ -59,7 +59,7 @@ if __name__ == "__main__":
     ########################
     # 3. Change Directions #
     ########################
-    TRIALS = 3
+    TRIALS = 2
     T_TRAJ = 3.0
     T_STEP = 8.0
     T_DELAY = 1.0
